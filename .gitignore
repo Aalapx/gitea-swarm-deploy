@@ -1,0 +1,9 @@
+# GitHub / Gitea self-hosted runner
+actions-runner/
+
+# Logs
+*.log
+
+# Secrets
+.env
+

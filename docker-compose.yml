@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  gitea:
+    image: gitea/gitea:latest
+
+    ports:
+      - target: 3000
+        published: 3000
+        mode: host
+      - target: 22
+        published: 222
+        mode: host
+
+    volumes:
+      - gitea_data:/data
+
+
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__server__APP_NAME=Aalap Gitea
+      - GITEA__mailer__ENABLED=true
+      - GITEA__mailer__PROTOCOL=smtps
+      - GITEA__mailer__SMTP_ADDR=smtp.gmail.com
+      - GITEA__mailer__SMTP_PORT=465
+      - GITEA__server__ROOT_URL=http://localhost:3000/
+      - GITEA__server__DOMAIN=localhost
+
+      # (Variable Substitution)
+      # This pulls the values directly from the Runner's shell environment
+      - GITEA__mailer__USER=${SMTP_USER}
+      - GITEA__mailer__PASSWD=${SMTP_PASS}
+      - GITEA__mailer__FROM=${SMTP_USER}
+
+
+volumes:
+  gitea_data:
