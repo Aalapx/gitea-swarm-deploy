@@ -19,7 +19,7 @@ services:
     environment:
       - USER_UID=1000
       - USER_GID=1000
-      - GITEA__server__APP_NAME=Aalap Gitea
+      - GITEA__server__APP_NAME=Aalapx gitea
       - GITEA__mailer__ENABLED=true
       - GITEA__mailer__PROTOCOL=smtps
       - GITEA__mailer__SMTP_ADDR=smtp.gmail.com
